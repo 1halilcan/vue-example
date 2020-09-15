@@ -10,6 +10,9 @@ export default {
   beforeCreate() {
     this.$store.dispatch('tokenSession');
   },
+  created() {
+    this.$store.dispatch('getTasksRequest');
+  }
 
 }
 </script>

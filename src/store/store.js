@@ -10,7 +10,8 @@ const store = new Vuex.Store({
   state: {
     apiKey: "AIzaSyDYl7v6u4McOkS0wFYXFydTNJ5uUbWdnPo",
     token: '',
-    localId: ''
+    localId: '',
+    routerComponent: ''
   },
   mutations: {
     setToken(state, payload) {
@@ -19,13 +20,12 @@ const store = new Vuex.Store({
     setLocalId(state, payload) {
       state.localId = payload;
     },
-    //logou post işlemi yapılmadı!!
     logout(state) {
       localStorage.removeItem('time');
       localStorage.removeItem('token');
       localStorage.removeItem('localId');
       router.push({name: 'AuthPage'});
-    }
+    },
   },
   actions: {
     tokenSession({state, commit, dispatch}) {

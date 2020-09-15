@@ -1,8 +1,10 @@
 <template>
   <div>
     <task-header/>
-    <router-view>
-    </router-view>
+    {{ routerComponent }}
+    <!--tasks-ul da sıkıntı var! -->
+    <!--created olduğunda nerede oluşturulcak ???? -->
+    <component :is="routerComponent"></component>
     <transition name="task-animate" mode="out-in">
       <task-new v-if="taskNew"></task-new>
     </transition>
@@ -13,31 +15,44 @@
 import {EventBus} from "../../main";
 import TaskHeader from "./TaskHeader";
 import Tasks from "./Tasks";
+import CompleteTasks from "./CompleteTasks";
 import TaskNew from "./TaskNew";
+import Task from "./TaskHeader";
 
 export default {
   name: "Tasks",
   data() {
     return {
-      deneme: 'görev başlığım',
       taskNew: false
     }
   },
   mounted() {
     EventBus.$on('taskNew', value => {
       this.taskNew = value;
-    })
+    });
+  },
+  computed: {
+    routerComponent() {
+      return this.$store.state.routerComponent;
+    }
   },
   components: {
+    Task,
     TaskHeader,
-    Tasks,
-    TaskNew
-  },
+    Tasks: 'tasks-ul',
+    TaskNew,
+    CompleteTasks
+  }
+  ,
   methods: {
     fsa() {
 
     }
-  },
+  }
+  ,
+  created() {
+    console.log("ok");
+  }
 
 }
 </script>

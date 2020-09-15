@@ -1,20 +1,26 @@
 <template>
   <div class="row">
     <ul class="tasks-ul">
-      <li @click="alert();">
+      <!--görev tamamlandı butonu ekle! -->
+      <li v-for="getTask in getTasks[0]" @click="alert();">
         <div class="tasks-event">
           <i class="fa fa-trash"></i>
           <i class="fa fa-cog"></i>
         </div>
-        {{ deneme  | upperCase }}
+        {{ getTask.title }}
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+import {mapGetters} from "vuex"
+
 export default {
-  name: "Tasks"
+  name: "Tasks",
+  computed: {
+    ...mapGetters(['getTasks'])
+  },
 }
 </script>
 
@@ -22,6 +28,7 @@ export default {
 .tasks-ul {
   display: flex;
   justify-content: flex-start;
+  flex-wrap: wrap;
   list-style-type: none;
 }
 
@@ -33,7 +40,7 @@ export default {
   color: black;
   margin: 10px;
   font-family: 'Montserrat', sans-serif;
-  font-size: 18px;
+  font-size: 15px;
   position: relative;
   cursor: pointer;
 }

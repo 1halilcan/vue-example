@@ -22,11 +22,6 @@ export default new Router({
         } else {
           next();
         }
-        /*if (store.state.token) {
-          next();
-        } else {
-          next('/');
-        }*/
       },
     },
     {
@@ -36,11 +31,19 @@ export default new Router({
     },
     {
       path: '/panel/gorevlerim',
-      component: TasksMain
+      component: TasksMain,
+      beforeEnter(to, from, next) {
+        store.state.routerComponent='tasks-ul';
+        next();
+      }
     },
     {
       path: '/panel/tamamlanmis-gorevlerim',
-      component: CompleteTasks
+      component: TasksMain,
+      beforeEnter(to, from, next) {
+       store.state.routerComponent='complete-tasks';
+       next();
+      }
     }
   ],
 
