@@ -1,4 +1,4 @@
-Bu proje Vue.js Framework yapısını anlamam için kodlanmıştır.
+## Bu proje Vue.js Framework yapısını anlamam için kodlanmıştır.
 
 # vue_project
 
