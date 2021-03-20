@@ -1,7 +1,5 @@
 ## Bu proje Vue.js Framework yapısını anlamam için kodlanmıştır.
 
-# vue_project
-
 > A Vue.js project
 
 ## Build Setup
